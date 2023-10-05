@@ -32,8 +32,8 @@ public class AdminService {
         return new ResponseEntity<>(products,HttpStatus.OK);
     }
 
-    public String deleteProduct(Long id){
-         productRepo.deleteById(id);
-         return deleteProduct(id);
+    public Boolean deleteProduct(Long id) {
+        productRepo.deleteById(id);
+        return true;
     }
 }
