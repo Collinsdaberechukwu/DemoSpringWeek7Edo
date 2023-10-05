@@ -38,4 +38,10 @@ public class AdminController {
         }
     }
 
+    @PutMapping("/update/{id}")
+    public ResponseEntity<Long> updateProduct(@RequestBody ProductDto productDto,@PathVariable Long id){
+        adminService.updateProject(productDto, id);
+        return new ResponseEntity<>(id,HttpStatus.CREATED);
+    }
+
 }

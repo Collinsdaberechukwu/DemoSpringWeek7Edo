@@ -36,4 +36,14 @@ public class AdminService {
         productRepo.deleteById(id);
         return true;
     }
+
+    public ResponseEntity<Products> updateProject(ProductDto update,Long id){
+        Products products = productRepo.findById(id).orElseThrow(()-> new RuntimeException("Product not find"));
+        products.setName(update.getName());
+        products.setAmount(update.getAmount());
+        products.setDescription(update.getDescription());
+
+        Products updatedProduct = productRepo.save(products);
+        return  new ResponseEntity<>(updatedProduct,HttpStatus.CREATED);
+    }
 }
