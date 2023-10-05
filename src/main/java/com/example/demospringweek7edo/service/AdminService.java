@@ -31,4 +31,9 @@ public class AdminService {
         Products products = productRepo.findById(id).orElseThrow(()-> new RuntimeException("Product requested not in stock"));
         return new ResponseEntity<>(products,HttpStatus.OK);
     }
+
+    public String deleteProduct(Long id){
+         productRepo.deleteById(id);
+         return deleteProduct(id);
+    }
 }
